@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.adressMapper">
+	<insert id="writeOk" parameterType="com.java.addr.dto.AddressDto">
+	<![CDATA[
+		insert into addr values(addr_num_seq.nextval, #{name}, #{phone}, #{email})
+	]]>
+	</insert>
+	
+	<select id="selectOk" parameterType="String" resultType="com.java.addr.dto.AddressDto">
+	<![CDATA[
+		select * from addr where name=#{name}
+	]]>
+	</select>
+	
+	<update id="update" parameterType="java.util.HashMap">
+	<![CDATA[
+		update addr set phone=#{phone}, email=#{email} where num=#{num}
+	]]>
+	</update>
+	
+	<delete id="deleteOk" parameterType="String">
+	<![CDATA[
+		delete from addr where name=#{name}
+	]]>
+	</delete>
+</mapper>
